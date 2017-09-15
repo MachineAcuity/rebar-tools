@@ -1,6 +1,6 @@
 {
   "name": "rebar-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "del": "3.0.0",
     "ejs": "2.5.7",
