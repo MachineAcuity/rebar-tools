@@ -17,6 +17,16 @@
     "node": "^8.3.0",
     "npm": "^5.0.0"
   },
+  "prettier": {
+    "bracketSpacing": true,
+    "printWidth": 80,
+    "parser": "babylon",
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
+  },
   "scripts": {
     "prettier": "./node_modules/.bin/prettier --write ./lib/*"
   },
