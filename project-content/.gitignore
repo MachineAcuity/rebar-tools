@@ -1,0 +1,6 @@
+.DS_Store
+ansible
+cut-version
+gantry
+publish-*
+update-*
