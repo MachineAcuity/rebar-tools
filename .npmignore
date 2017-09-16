@@ -1,0 +1,6 @@
+.DS_Store
+.editorconfig
+.gitignore
+.jsbeautifyrc
+*.log
+node_modules

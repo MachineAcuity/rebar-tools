@@ -1,0 +1,72 @@
+#!/bin/bash
+
+if [ $# -eq 0 ] ; then
+  echo "No argument supplied. Version number is expected as argument."
+  exit 1
+fi
+
+cd cut-version/<%- applicationName %>
+
+if ! (git checkout master)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git pull origin master)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git merge -m "Merge version to master with no fast forward by publish version" --no-ff revision-$1)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git push origin master)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git tag -a $1 -m "Release of revision $1")
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git push --tags)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git checkout develop)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git pull origin develop)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git merge  -m "Merge master to develop with no fast forward by publish version" --no-ff master)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+if ! (git push origin develop)
+then
+    echo >&2 💔
+    exit 1
+fi
+
+echo 👍 Finished publishing <%- applicationName %> version $1
+
+cd ../..

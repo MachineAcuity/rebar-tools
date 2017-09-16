@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -eq 0 ] ; then
+  echo "No argument supplied. Version number is expected as argument."
+  exit 1
+fi
+
+rm -rf ./gantry/source/<%- application.applicationName %>
+(cd ./gantry/source && git clone <%- application.repositoryUrl %> <%- application.applicationName %> && cd <%- application.applicationName %> && git checkout revision-$1)
+
+rsync -av ./gantry/source/<%- application.applicationName %>/deployment/ ./gantry/run/<%- application.applicationName %>/ --exclude node_modules --delete
+cp ./<%- application.applicationName %>/.env ./gantry/run/<%- application.applicationName %>/.env
+(cd ./gantry/run/<%- application.applicationName %> && yarn --production)
+(cd ./gantry/run/<%- application.applicationName %> && node units/urb-base-tools/update-ip 127.0.0.1)
+
+(export NODE_ENV=development && cd ./gantry/run/<%- application.applicationName %> && node units/urb-base-tools/setup-database && unset NODE_ENV)
