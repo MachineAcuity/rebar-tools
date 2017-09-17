@@ -1,0 +1,9 @@
+{
+    "apps": [{
+        "name": "{{ rebar_appgroup }}_{{ rebar_instance }}",
+        "cwd": "/home/ubuntu/{{ rebar_appgroup }}/{{ rebar_instance }}/",
+        "script": "server/server.js",
+        "watch": true,
+        "instances": {{ site_process_count }}
+    }]
+}

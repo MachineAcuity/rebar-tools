@@ -1,0 +1,9 @@
+---
+- name: (rebar-web-fundamentals Node.js) Install
+  include_role:
+    name: geerlingguy.nodejs
+  vars:
+    nodejs_version: "8.x"
+    nodejs_npm_global_packages:
+      - name: yarn
+      - name: node-gyp

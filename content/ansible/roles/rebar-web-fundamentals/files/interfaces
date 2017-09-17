@@ -1,0 +1,11 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+auto ens3
+iface ens3 inet dhcp
+iface ens3 inet6 auto

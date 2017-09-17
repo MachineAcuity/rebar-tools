@@ -1,0 +1,9 @@
+---
+- name: (rebar-web-fundamentals pm2) Install
+  include_role:
+    name: weareinteractive.pm2
+  vars:
+    pm2_user: ubuntu
+    pm2_service_name: pm2
+    pm2_service_enabled: yes
+    pm2_service_state: started

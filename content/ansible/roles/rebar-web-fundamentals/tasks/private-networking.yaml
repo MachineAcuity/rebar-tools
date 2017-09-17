@@ -1,0 +1,43 @@
+---
+- name: (rebar-web-fundamentals private-networking) List items
+  debug: msg=" public IP is {{inventory_hostname}} private IP is {{cluster_info[inventory_hostname].private_ip}}"
+
+- name: (rebar-web-fundamentals private-networking) Upload /etc/network/interfaces
+  copy:
+    src: interfaces
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: (rebar-web-fundamentals private-networking) Create /etc/network/interfaces.d
+  file:
+    dest: /etc/network/interfaces.d
+    owner: root
+    group: root
+    mode: u=rwX,g=rX,o=rX
+    state: directory
+
+- name: (rebar-web-fundamentals private-networking) Upload /etc/network/interfaces.d/private
+  template:
+    src: private.j2
+    dest: /etc/network/interfaces.d/private
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+    force: yes
+
+- name: (rebar-web-fundamentals private-networking) Restart networking
+  service: "name=networking state=restarted"
+
+- name: (rebar-web-fundamentals private-networking) Install
+  include_role:
+    name: franklinkim.ufw
+  vars:
+    ufw_rules:
+      - { port: 22, rule: allow }
+      - { from_ip: "10.99.0.0/16", rule: allow }
+    # what is this for? ufw_default_forward_policy: ACCEPT
+    ufw_logging: full
+    ufw_applications:
+     - { name: "OpenSSH" }

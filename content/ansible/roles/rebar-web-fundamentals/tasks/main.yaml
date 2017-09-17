@@ -1,0 +1,9 @@
+---
+  - include: update.yaml
+  - include: private-networking.yaml
+  - include: gluster.yaml
+#  - include: nodejs.yaml
+#  - include: nginx.yaml
+#  - include: pm2.yaml
+#  - include: git.yaml
+#  - include: certbot.yaml
