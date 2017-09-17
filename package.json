@@ -17,6 +17,12 @@
     "node": "^8.3.0",
     "npm": "^5.0.0"
   },
+  "lint-staged": {
+    "lib/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "prettier": {
     "bracketSpacing": true,
     "printWidth": 80,
