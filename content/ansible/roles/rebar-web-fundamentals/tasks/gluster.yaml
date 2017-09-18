@@ -1,0 +1,56 @@
+---
+#- name: (rebar-web-fundamentals gluster) Firewall
+#  include_role:
+#    name: geerlingguy.firewall
+
+- name: Add PPA for GlusterFS.
+  apt_repository:
+    repo: 'ppa:gluster/glusterfs-3.10'
+    state: present
+    update_cache: yes
+  register: glusterfs_ppa_added
+
+- name: Ensure GlusterFS will reinstall if the PPA was just added.
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - glusterfs-server
+    - glusterfs-client
+  when: glusterfs_ppa_added.changed
+
+- name: Ensure GlusterFS is installed.
+  apt:
+    name: "{{ item }}"
+    state: installed
+    #default_release: "{{ glusterfs_default_release }}"
+  with_items:
+    - glusterfs-server
+    - glusterfs-client
+
+- name: Ensure GlusterFS is started and enabled at boot.
+  service: "name=glusterfs-server state=started enabled=yes"
+
+- name: (rebar-web-fundamentals gluster) Ensure Gluster brick and mount directories exist.
+  file: "path={{ item }} state=directory mode=0775"
+  with_items:
+    - "/mnt/blockstorage/brick"
+    - "/mnt/gluster"
+
+- name: (rebar-web-fundamentals gluster) Configure Gluster volume.
+  gluster_volume:
+    state: present
+    name: gluster
+    brick: /mnt/blockstorage/brick
+    # rebalance: yes # volume rebalance: gluster: failed: Volume gluster is not a distribute volume or contains only 1 brick.\nNot performing rebalance
+    cluster: "{{ cluster_info[inventory_hostname].other_gluster_ips }}"
+    force: yes
+  run_once: true
+
+- name: (rebar-web-fundamentals gluster) Ensure Gluster volume is mounted.
+  mount:
+    name: /mnt/gluster
+    src: "{{ inventory_hostname }}:/gluster"
+    fstype: glusterfs
+    opts: "defaults,_netdev"
+    state: mounted

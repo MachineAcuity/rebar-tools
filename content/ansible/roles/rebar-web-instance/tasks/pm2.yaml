@@ -1,0 +1,31 @@
+---
+#- name: (rebar-web-instance git-clone pm2) Install
+#  include_role:
+#    name: weareinteractive.pm2
+#  vars:
+#    pm2_user: ubuntu
+#    pm2_service_name: pm2
+#    pm2_service_enabled: yes
+#    pm2_service_state: started
+#    pm2_apps:
+#      - run: "pm2.json"
+#        path: "/home/ubuntu/{{ rebar_appgroup }}/{{ rebar_instance }}/"
+- name: (rebar-web-instance pm2) Delete
+  become: yes
+  become_user: ubuntu
+  register: pm2_app_result
+  failed_when: "pm2_app_result.stderr is defined and pm2_app_result.stderr.find('[Process {{ rebar_appgroup }}_{{ rebar_instance }} not found]') != -1"
+  shell: |
+    pm2 delete {{ rebar_appgroup }}_{{ rebar_instance }}
+
+- name: (rebar-web-instance pm2) Start
+  become: yes
+  become_user: ubuntu
+  shell: |
+    pm2 start /home/ubuntu/{{ rebar_appgroup }}/{{ rebar_instance }}/pm2.json -f --name {{ rebar_appgroup }}_{{ rebar_instance }}
+
+- name: (rebar-web-instance pm2) Save
+  become: yes
+  become_user: ubuntu
+  shell: |
+    pm2 save
