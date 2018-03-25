@@ -13,7 +13,7 @@ cp ./<%- applicationName %>/.env ./gantry/run/<%- applicationName %>/.env
 (cd ./gantry/run/<%- applicationName %> && yarn --production)
 (cd ./gantry/run/<%- applicationName %> && node units/urb-base-tools/update-ip 127.0.0.1)
 
-<%if (application.isSite > 0) { %>
+<%if (application.isArtifact > 0) { %>
 rsync -av ./gantry/source/<%- applicationName %>/ ./gantry/run/<%- applicationName %>-source/ --exclude node_modules --exclude .git --exclude build --delete
 cp ./<%- applicationName %>/.env ./gantry/run/<%- applicationName %>-source/.env
 (cd ./gantry/run/<%- applicationName %>-source && yarn)

@@ -5,7 +5,7 @@ The rebar tools are for managing [Rebar](http://codefoundries.com/products/rebar
 ## Requirements
 
 * Works only on UNIX (Mac, Linux).
-* Requires Node.js `8.3` or later.
+* Requires Node.js `8.9` Carbon or later.
 * NGINX configuration is assumed to be located at `/usr/local/etc/nginx/servers`.
 * Ansible configuration is assumed to be located at `/etc/ansible`.
 * Output is optimized for terminals with dark background color.
