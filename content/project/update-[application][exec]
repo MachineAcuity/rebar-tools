@@ -19,4 +19,9 @@ cp ./<%- applicationName %>/.env ./gantry/run/<%- applicationName %>-source/.env
 (cd ./gantry/run/<%- applicationName %>-source && yarn)
 <% } %>
 
+<%if (application.hasTunnel > 0) { %>
+cp ./<%- applicationName %>/tunnels.json ./gantry/run/<%- applicationName %>/units/_configuration/cf-devtunnel/tunnels.json
+<% } %>
+
+
 (export NODE_ENV=development && cd ./gantry/run/<%- applicationName %> && node units/urb-base-tools/setup-database && unset NODE_ENV)
