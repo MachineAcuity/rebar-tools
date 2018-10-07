@@ -61,4 +61,4 @@
   become: yes
   become_user: ubuntu
   shell: |
-    export NODE_ENV=development && cd /home/ubuntu/{{ rebar_appgroup }}/{{ rebar_instance }} && node scripts/setup-database
+    export NODE_ENV=development && cd /home/ubuntu/{{ rebar_appgroup }}/{{ rebar_instance }} && node scripts/setupDatabase
