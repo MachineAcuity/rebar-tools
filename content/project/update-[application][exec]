@@ -24,4 +24,4 @@ cp ./<%- applicationName %>/tunnels.json ./gantry/run/<%- applicationName %>/uni
 <% } %>
 
 
-(export NODE_ENV=development && cd ./gantry/run/<%- applicationName %> && node units/urb-base-tools/setupDatabase && unset NODE_ENV)
+(export NODE_ENV=development && cd ./gantry/run/<%- applicationName %> && node units/urb-appbase-server/setupDatabase && unset NODE_ENV)
