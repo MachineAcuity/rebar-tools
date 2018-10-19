@@ -11,7 +11,7 @@ rm -rf ./gantry/source/<%- applicationName %>
 rsync -av ./gantry/source/<%- applicationName %>/deployment/ ./gantry/run/<%- applicationName %>/ --exclude node_modules --delete
 cp ./<%- applicationName %>/.env ./gantry/run/<%- applicationName %>/.env
 (cd ./gantry/run/<%- applicationName %> && yarn --production)
-(cd ./gantry/run/<%- applicationName %> && node units/urb-base-tools/updateIP 127.0.0.1)
+(cd ./gantry/run/<%- applicationName %> && node units/rb-base-tools/updateIP 127.0.0.1)
 
 <%if (application.isArtifact > 0) { %>
 rsync -av ./gantry/source/<%- applicationName %>/ ./gantry/run/<%- applicationName %>-source/ --exclude node_modules --exclude .git --exclude build --delete
@@ -20,8 +20,8 @@ cp ./<%- applicationName %>/.env ./gantry/run/<%- applicationName %>-source/.env
 <% } %>
 
 <%if (application.hasTunnel > 0) { %>
-cp ./<%- applicationName %>/tunnels.json ./gantry/run/<%- applicationName %>/units/_configuration/cf-devtunnel/tunnels.json
+cp ./<%- applicationName %>/tunnels.json ./gantry/run/<%- applicationName %>/units/_configuration/rb-devtunnel/tunnels.json
 <% } %>
 
 
-(export NODE_ENV=development && cd ./gantry/run/<%- applicationName %> && node units/urb-appbase-server/setupDatabase && unset NODE_ENV)
+(export NODE_ENV=development && cd ./gantry/run/<%- applicationName %> && node units/rb-appbase-server/setupDatabase && unset NODE_ENV)
