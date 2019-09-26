@@ -1,6 +1,6 @@
 {
   "name": "rebar-tools",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "dependencies": {
     "chalk": "2.4.2",
     "del": "5.1.0",
@@ -11,12 +11,12 @@
   },
   "devDependencies": {
     "husky": "3.0.5",
-    "lint-staged": "9.3.0",
+    "lint-staged": "9.4.0",
     "prettier": "1.18.2"
   },
   "engines": {
-    "node": ">=10.6.0",
-    "npm": ">=6.1.0"
+    "node": ">=12.10.0",
+    "npm": ">=6.10.0"
   },
   "husky": {
     "hooks": {
