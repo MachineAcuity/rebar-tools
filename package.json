@@ -1,18 +1,18 @@
 {
   "name": "rebar-tools",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "dependencies": {
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "del": "5.1.0",
-    "ejs": "2.7.1",
+    "ejs": "2.7.4",
     "nodegit": "0.26.2",
-    "yargs": "14.0.0",
+    "yargs": "15.0.2",
     "yargs-promise-handler": "1.0.2"
   },
   "devDependencies": {
-    "husky": "3.0.7",
-    "lint-staged": "9.4.0",
-    "prettier": "1.18.2"
+    "husky": "3.1.0",
+    "lint-staged": "9.4.3",
+    "prettier": "1.19.1"
   },
   "engines": {
     "node": ">=12.10.0",
