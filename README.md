@@ -1,11 +1,11 @@
 # Tools for managing Rebar and Universal Relay Boilerplate applications
 
-The rebar tools are for managing [Rebar](http://codefoundries.com/products/rebar.html) and [Universal Relay Boilerplate](http://codefoundries.com/products/UniversalRelayBoilerplate.html) applications.
+The rebar tools are for managing [Rebar](https://github.com/MachineAcuity/rebar) applications.
 
 ## Requirements
 
 * Works only on UNIX (Mac, Linux).
-* Requires Node.js `12.10` or later.
+* Requires Node.js `12.13` or later.
 * Ansible configuration is assumed to be located at `/etc/ansible`.
 * Output is optimized for terminals with dark background color.
 

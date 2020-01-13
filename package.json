@@ -4,18 +4,18 @@
   "dependencies": {
     "chalk": "3.0.0",
     "del": "5.1.0",
-    "ejs": "2.7.4",
-    "nodegit": "0.26.2",
-    "yargs": "15.0.2",
+    "ejs": "3.0.1",
+    "nodegit": "0.26.3",
+    "yargs": "15.1.0",
     "yargs-promise-handler": "1.0.2"
   },
   "devDependencies": {
-    "husky": "3.1.0",
-    "lint-staged": "9.4.3",
+    "husky": "4.0.7",
+    "lint-staged": "9.5.0",
     "prettier": "1.19.1"
   },
   "engines": {
-    "node": ">=12.10.0",
+    "node": ">=12.13.0",
     "npm": ">=6.10.0"
   },
   "husky": {
