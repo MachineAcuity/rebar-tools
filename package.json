@@ -1,6 +1,6 @@
 {
   "name": "rebar-tools",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "dependencies": {
     "chalk": "3.0.0",
     "del": "5.1.0",
