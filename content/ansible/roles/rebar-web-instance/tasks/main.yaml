@@ -1,5 +1,0 @@
----
-  - include: git-clone.yaml
-  - include: deploy.yaml
-  - include: pm2.yaml
-  - include: nginx.yaml

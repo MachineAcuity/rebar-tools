@@ -1,3 +1,0 @@
-#!/bin/bash
-
-<% for(let applicationName in project.applications) { %> (cd ./gantry/run/<%= applicationName %> && node units/rb-base-server/server) &<% if (project.applications[ applicationName ].hasTunnel > 0) { %> (sleep 7 && cd ./gantry/run/<%= applicationName %> && node units/rb-base-tools/tunnel) &<% } %><% } %>& fg

@@ -1,8 +1,0 @@
----
-- name: (rebar-web-fundamentals certbot) Install
-  include_role:
-    name: geerlingguy.certbot
-  vars:
-    certbot_install_from_source: yes
-    certbot_auto_renew_hour: 6
-    certbot_auto_renew_minute: 20

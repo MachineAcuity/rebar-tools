@@ -1,9 +1,0 @@
----
-#- name: Update packages
-#  apt:
-#   upgrade: dist
-#   update_cache: yes
-
-# Theis source indicates that the apt module is unreliable: https://github.com/ansible/ansible-modules-core/issues/2951
-- name: (rebar-web-fundamentals) Update packages
-  shell: export DEBIAN_FRONTEND=noninteractive && apt-get update && sudo apt-get -y install build-essential

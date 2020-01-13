@@ -6,7 +6,6 @@ The rebar tools are for managing [Rebar](https://github.com/MachineAcuity/rebar)
 
 * Works only on UNIX (Mac, Linux).
 * Requires Node.js `12.13` or later.
-* Ansible configuration is assumed to be located at `/etc/ansible`.
 * Output is optimized for terminals with dark background color.
 
 ## Installation

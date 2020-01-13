@@ -1,7 +1,0 @@
-# Vultr private networking
-
-auto ens7
-iface ens7 inet static
-	address {{ cluster_info[inventory_hostname].private_ip }}
-	netmask 255.255.0.0
-	mtu 1450
