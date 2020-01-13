@@ -1,6 +1,6 @@
 {
   "name": "rebar-tools",
-  "version": "4.2.3",
+  "version": "5.0.0",
   "dependencies": {
     "chalk": "3.0.0",
     "del": "5.1.0",
@@ -46,15 +46,15 @@
   "bin": {
     "rebar": "lib/cli.js"
   },
-  "description": "Tools for managing Rebar and Universal Relay Boilerplate applications",
-  "author": "Code Foundries",
+  "description": "Tools for managing Rebar applications",
+  "author": "machine Acuity",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codefoundries/rebar-tools.git"
+    "url": "git+https://github.com/machineacuity/rebar-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/codefoundries/rebar-tools/issues"
+    "url": "https://github.com/machineacuity/rebar-tools/issues"
   },
-  "homepage": "https://github.com/codefoundries/rebar-tools#readme"
+  "homepage": "https://github.com/machineacuity/rebar-tools#readme"
 }

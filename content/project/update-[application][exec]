@@ -20,7 +20,7 @@ cp ./<%- applicationName %>/.env ./gantry/run/<%- applicationName %>-source/.env
 <% } %>
 
 <%if (application.hasTunnel > 0) { %>
-cp ./<%- applicationName %>/tunnels.json ./gantry/run/<%- applicationName %>/units/_configuration/rb-devtunnel/tunnels.json
+cp ./<%- applicationName %>/tunnels.json ./gantry/run/<%- applicationName %>/units/_configuration/rb-base-tools/tunnels.json
 <% } %>
 
 
