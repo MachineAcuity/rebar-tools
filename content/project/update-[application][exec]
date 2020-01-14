@@ -19,9 +19,6 @@ cp ./<%- applicationName %>/.env ./sandbox/run/<%- applicationName %>-source/.en
 (cd ./sandbox/run/<%- applicationName %>-source && yarn)
 <% } %>
 
-<%if (application.hasTunnel > 0) { %>
 cp ./<%- applicationName %>/tunnels.json ./sandbox/run/<%- applicationName %>/units/_configuration/rb-base-tools/tunnels.json
-<% } %>
-
 
 (export NODE_ENV=development && cd ./sandbox/run/<%- applicationName %> && node units/rb-appbase-server/setupDatabase && unset NODE_ENV)
