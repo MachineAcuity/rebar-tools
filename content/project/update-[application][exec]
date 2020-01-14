@@ -9,16 +9,14 @@ rm -rf ./sandbox/source/<%- applicationName %>
 (cd ./sandbox/source && git clone <%- application.repositoryUrl %> <%- applicationName %> && cd <%- applicationName %> && git checkout revision-$1)
 
 rsync -av ./sandbox/source/<%- applicationName %>/deployment/ ./sandbox/run/<%- applicationName %>/ --exclude node_modules --delete
-cp ./<%- applicationName %>/.env ./sandbox/run/<%- applicationName %>/.env
-(cd ./sandbox/run/<%- applicationName %> && yarn --production)
+rsync -av ./app-settings/<%- applicationName %>/ ./sandbox/run/<%- applicationName %>/
+(cd ./sandbox/run/<%- applicationName %> && yarn --production && yarn add localtunnel && yarn add http-proxy)
 (cd ./sandbox/run/<%- applicationName %> && node units/rb-base-tools/updateIP 127.0.0.1)
 
 <%if (application.isArtifact > 0) { %>
 rsync -av ./sandbox/source/<%- applicationName %>/ ./sandbox/run/<%- applicationName %>-source/ --exclude node_modules --exclude .git --exclude build --delete
-cp ./<%- applicationName %>/.env ./sandbox/run/<%- applicationName %>-source/.env
+rsync -av ./app-settings/<%- applicationName %>/ ./sandbox/run/<%- applicationName %>-source/
 (cd ./sandbox/run/<%- applicationName %>-source && yarn)
 <% } %>
-
-cp ./<%- applicationName %>/tunnels.json ./sandbox/run/<%- applicationName %>/units/_configuration/rb-base-tools/tunnels.json
 
 (export NODE_ENV=development && cd ./sandbox/run/<%- applicationName %> && node units/rb-appbase-server/setupDatabase && unset NODE_ENV)

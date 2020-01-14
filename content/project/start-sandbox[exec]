@@ -1,3 +1,5 @@
 #!/bin/bash
 
-<% for(let applicationName in project.applications) { %> (cd ./sandbox/run/<%= applicationName %> && node units/rb-base-server/server) & (sleep 7 && cd ./sandbox/run/<%= applicationName %> && node units/rb-base-tools/tunnel) & <% } %>& fg
+killall node
+sleep 7
+<% for(let applicationName in project.applications) { %> (cd ./sandbox/run/<%= applicationName %> && node units/rb-base-server/server) & (sleep 7 && cd ./sandbox/run/<%= applicationName %> && node units/rb-base-tools/tunnel) & <% } %>
