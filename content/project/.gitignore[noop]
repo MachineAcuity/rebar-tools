@@ -1,5 +1,4 @@
 .DS_Store
 cut-version
 sandbox
-publish-*
 update-*
