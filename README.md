@@ -12,8 +12,6 @@ The rebar tools are for managing [Rebar](https://github.com/MachineAcuity/rebar)
 
 Run `npm install -g rebar-tools`.
 
-Notice that because the tools use `nodegit` the installation might take a substantial amount of time, if it needs to be built for the specific version of Node.js you use.
-
 ## Usage
 
 Run `rebar --help` to receive information about options.
